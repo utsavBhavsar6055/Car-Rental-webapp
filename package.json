@@ -1,0 +1,7 @@
+{
+  "name": "carrentalsys",
+  "private": true,
+  "scripts": {
+    "dev": "bash scripts/start-dev.sh"
+  }
+}
