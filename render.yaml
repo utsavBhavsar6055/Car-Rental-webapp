@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: carrentalsys-api
+    runtime: python
+    rootDir: .
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: carrentalsys-db
+          property: connectionString
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: carrentalsys-frontend
+          property: host
+      - key: GOOGLE_API_KEY
+        sync: false
+
+  - type: web
+    name: carrentalsys-frontend
+    runtime: node
+    rootDir: .
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: carrentalsys-api
+          property: host
+
+databases:
+  - name: carrentalsys-db
+    databaseName: carrentalsys
+    user: carrentalsys
