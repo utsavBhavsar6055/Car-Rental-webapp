@@ -2,8 +2,9 @@
   "name": "carrentalsys",
   "private": true,
   "scripts": {
-    "dev": "npm --prefix frontend ci && npm --prefix frontend run dev -- --host 0.0.0.0 --port ${PORT:-5173}",
-    "local": "bash scripts/start-dev.sh",
+    "dev": "bash scripts/start-dev.sh",
+    "frontend": "npm --prefix frontend run dev",
+    "backend": ".venv/bin/python -m uvicorn backend.main:app --reload --port 8000",
     "build": "npm --prefix frontend ci && npm --prefix frontend run build",
     "start": "npm --prefix frontend run preview -- --host 0.0.0.0 --port ${PORT:-4173}"
   }
