@@ -1,8 +1,6 @@
 const API_BASE =
   import.meta.env.VITE_API_URL ||
-  (typeof window !== 'undefined' && window.location.hostname === 'localhost'
-    ? 'http://localhost:8000'
-    : 'http://127.0.0.1:8000');
+  'http://localhost:8000';
 
 function getAuthHeader() {
   const token = localStorage.getItem('token');

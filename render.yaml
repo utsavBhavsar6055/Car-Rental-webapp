@@ -29,7 +29,7 @@ services:
         fromService:
           type: web
           name: carrentalsys-api
-          property: host
+          property: url
 
 databases:
   - name: carrentalsys-db
